@@ -55,7 +55,7 @@ void move_back_stop() {
 }
 
 
-void turn_right_stop() {
+void turn_left_stop() {
   // put your main code here, to run repeatedly:
 
   // Motor B
@@ -92,6 +92,45 @@ void turn_right_stop() {
 }
 
 
+void turn_right_stop() {
+  // put your main code here, to run repeatedly:
+
+  // Motor A
+  digitalWrite(inA1, HIGH);
+  digitalWrite(inA2, LOW);
+
+  analogWrite(enA, 100); // speed from 0-255
+
+  // Motor B
+  digitalWrite(inB1, HIGH);
+  digitalWrite(inB2, LOW);
+
+  analogWrite(enB, 130); // speed from 0-255
+
+
+
+
+  digitalWrite(LED_BUILTIN, HIGH);
+  delay(5000);
+
+  // Stop all motors
+
+  digitalWrite(inB1, LOW);
+  digitalWrite(inB2, LOW);
+
+  digitalWrite(inA1, LOW);
+  digitalWrite(inA2, LOW);
+
+
+  digitalWrite(LED_BUILTIN, LOW);
+
+  
+  delay(5000);
+  
+}
+
+
+
 void move_straight_stop() {
   // put your main code here, to run repeatedly:
 
@@ -99,13 +138,13 @@ void move_straight_stop() {
   digitalWrite(inB1, HIGH);
   digitalWrite(inB2, LOW);
 
-  analogWrite(enB, 80); // speed from 0-255
+  analogWrite(enB, 120); // speed from 0-255
 
   // Motor A
   digitalWrite(inA1, HIGH);
   digitalWrite(inA2, LOW);
 
-  analogWrite(enA, 80); // speed from 0-255
+  analogWrite(enA, 120); // speed from 0-255
   
 
 
@@ -140,15 +179,17 @@ void loop_stop() {
   digitalWrite(inB1, LOW);
   digitalWrite(inB2, LOW);
 
+  while (true);
 
-  digitalWrite(LED_BUILTIN, LOW);
+    digitalWrite(LED_BUILTIN, LOW);
 
-  delay(2000);
+    delay(2000);
   
 }
 
 void loop() {
-  move_straight_stop();
   turn_right_stop();
+  move_straight_stop();
+  turn_left_stop();
   loop_stop();
 }
